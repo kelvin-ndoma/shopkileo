@@ -1,5 +1,5 @@
 class Admin::CategoriesController < ApplicationController
-  before_action :set_admin_category, only: %i[ show edit update destroy ]
+  before_action :set_admin_category, only: %i[show edit update destroy]
 
   # GET /admin/categories or /admin/categories.json
   def index
@@ -60,11 +60,11 @@ class Admin::CategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_category
-      @admin_category = Category.find(params.expect(:id))
+      @admin_category = Category.find(params[:id])  # Fixed here
     end
 
     # Only allow a list of trusted parameters through.
     def admin_category_params
-      params.expect(admin_category: [ :name, :description ])
+      params.require(:admin_category).permit(:name, :description)  # Fixed here
     end
 end

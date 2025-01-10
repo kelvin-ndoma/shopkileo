@@ -11,11 +11,12 @@
   </div>
 
   <div id="admin_categories" class="min-w-full">
-    <% @admin_categories.each do |admin_category| %>
-      <%= render admin_category %>
-      <p>
-        <%= link_to "Show this category", admin_category, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
-    <% end %>
+  <% @admin_categories.each do |admin_category| %>
+    <%= render "admin/categories/category", category: admin_category %>
+    <p>
+  <%= link_to "Show this category", admin_category_path(admin_category), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+</p>
+  <% end %>
+  
   </div>
 </div>
