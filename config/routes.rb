@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :categories
+    resources :orders
+    resources :products do
+      resources :stocks
+    end
+      resources :categories
   end
-  # Devise routes for admins
   devise_for :admins
   
   # Health check route
