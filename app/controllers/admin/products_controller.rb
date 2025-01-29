@@ -37,14 +37,14 @@ class Admin::ProductsController < AdminController
   # PATCH/PUT /admin/products/1 or /admin/products/1.json
   def update
     @admin_product = Product.find(params[:id])
-    
+
     if @admin_product.update(admin_product_params.except(:images))
       if admin_product_params[:images]
         admin_product_params[:images].each do |image|
           @admin_product.images.attach(image)
         end
       end
-      
+
       redirect_to admin_products_path, notice: "Product updated successfully"
     else
       render :edit, status: :unprocessable_entity
